@@ -1,53 +1,28 @@
-﻿internal class Program
+﻿using Tutorial_Event;
+
+internal class Program
 {
+    /// <summary>
+    /// https://learn.microsoft.com/ko-kr/dotnet/csharp/programming-guide/events/
+    /// 
+    /// </summary>
+    /// <param name="args"></param>
     static void Main(string[] args)
     {
-        MyPublisher publisher = new MyPublisher();
-        MySubscriber subscriber1 = new MySubscriber("Subscriber 1");
-        MySubscriber subscriber2 = new MySubscriber("Subscriber 2");
-
-        publisher.MyEvent += subscriber1.OnMyEvent;
-        publisher.MyEvent += subscriber2.OnMyEvent;
-
-        publisher.PublishEvent("Hello from the event!");
-
-        Console.ReadLine();
-    }
-}
+        //_ = new EventPublisherSubscriber();
+        //_ = new DelegateEventHandler();
 
 
-public class MyEventArgs : EventArgs
-{
-    public string Message { get; }
 
-    public MyEventArgs(string message)
-    {
-        Message = message;
-    }
-}
+        // .NET 지침을 따르는 이벤트를 게시하는 방법
+        _ = new EventHandlerPattern();
 
-public class MyPublisher
-{
-    public delegate void MyEventHandler(object sender, MyEventArgs e);
-    public event MyEventHandler MyEvent;
 
-    public void PublishEvent(string message)
-    {
-        MyEvent?.Invoke(this, new MyEventArgs(message));
-    }
-}
 
-public class MySubscriber
-{
-    private string name;
+        // 파생 클래스에서 기본 클래스 이벤트를 발생하는 방법
 
-    public MySubscriber(string name)
-    {
-        this.name = name;
-    }
 
-    public void OnMyEvent(object sender, MyEventArgs e)
-    {
-        Console.WriteLine($"{name} received event: {e.Message}");
+
+
     }
 }

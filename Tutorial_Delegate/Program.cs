@@ -13,7 +13,11 @@ internal class Program
         //_ = new MulticastDelegateCombine();
         //_ = new MulticastDelegateOperator();
         //_ = new DelegateCallbackNotification();
-        _ = new DelegateAnonymousMethod();
+        //_ = new DelegateAnonymousMethod();
+
+        _ = new DelegateGeneric();
+        //_ = new DelegateAction();
+
 
     }
 }
